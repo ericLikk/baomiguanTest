@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head lang=zh_CN>
+    <meta charset="UTF-8">
+    <!--声明文档兼容模式，表示使用IE浏览器的最新模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Responsive layout：响应式布局-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>保密观考试</title>
+	<link rel="stylesheet" href="/static/plugins/bootstrap-5.3.0-alpha3-dist/css/bootstrap.css"></link> 
+</head>
+<body>
+{%load static%}
+{#搜索框#}
+<div class="container-fluid text-orange text-center">
+ <h1>保密观考试答案检索</h1>
+</div>
+<div class="container">   
+ <div>
+  <form method="get" action="/search/">
+    {% csrf_token %}
+    <div class="input-group">
+      <input type="text" class="col-6 offset-2"  name="mykey" onkeydown="onKeyDown(event)" class="form-control" placeholder="请输入关键字" required />
+	<span class="input-group-btn">
+	    <input type="submit" class="btn btn-default" id="btn_Search" value="查询" />
+	</span>
+    </div>
+   </form>
+  </div>
+</div>
+<div class="container">
+	{%for im in imgs%}	
+	<div class="row">
+	    <div class="col-10 offset-1">
+		    <a href="{%static im %}" class="thumbnail">
+		    <img  class="img-fluid"  decoding="async" src="{% static im %}"
+			 alt="结果">
+		</a>
+	   </div>
+	</div>
+	{%endfor%}
+</div>
+ 
+        <script type="text/javascript">
+            function onKeyDown(event){
+                var e = event || window.event || arguments.callee.caller.arguments[0];
+                if(e && e.keyCode==27){ // 按 Esc
+                    //要做的事情
+                    alert("此处esc触发搜索事件");
+                }
+                if(e && e.keyCode==113){ // 按 F2
+                    //要做的事情
+                    alert("此处F2触发搜索事件");
+                }
+                if(e && e.keyCode==13){ // enter 键
+                    $('#btn_Search').click();
+                }
+            }
+        </script>
+	
+
+<!-- 引入jQuery核心js文件 -->
+<script src="http://cdn.static.runoob.com/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- 引入BootStrap核心js文件 -->
+<script src="http://cdn.static.runoob.com/libs/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</div>
+</body>

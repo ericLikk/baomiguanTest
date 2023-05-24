@@ -1,0 +1,4 @@
+ip:127.0.0.1
+portL3307
+usr:root
+pas:123456
