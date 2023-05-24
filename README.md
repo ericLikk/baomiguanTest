@@ -6,3 +6,7 @@
 > 
 > `pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/`
 
+2.启动服务
+
+> nohup python manage.py runserver 0.0.0.0:8090 2>nohup.txt &
+
